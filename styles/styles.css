@@ -310,6 +310,7 @@ aside{
 
 #productDetail{
     padding-bottom: 24px;
+    z-index: 1;
 }
 
 .product-detail-close img{
