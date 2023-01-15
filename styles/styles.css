@@ -212,7 +212,7 @@ nav {
 
 aside{
     position: absolute;
-    right: 20px;
+    right: 0;
     width: 360px;
     box-sizing: border-box;   
     background-color: var(--white);

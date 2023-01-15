@@ -9,24 +9,41 @@ const aside = document.querySelector('#shoppingCartContainer');
 
 const cardsContainer = document.querySelector('.cards-container');
 
+const productDetailContainer = document.querySelector('#productDetail');
+const productDetailCloseIcon = document.querySelector('.product-detail-close');
+
 menuEmail.addEventListener('click', toggleDesktopMenu);
 burguerMenu.addEventListener('click', toggleMobileMenu);
 menuShoppingCart.addEventListener('click', toggleShoppingCart);
+productDetailCloseIcon.addEventListener('click', closeProductDetailAside);
 
 function toggleDesktopMenu(){
     aside.classList.add('inactive');
+    productDetailContainer.classList.add('inactive');
     desktopMenu.classList.toggle('inactive');
 }
 
 function toggleMobileMenu() {
+    productDetailContainer.classList.add('inactive');
     aside.classList.add('inactive');
     mobileMenu.classList.toggle('inactive');
 }
 
 function toggleShoppingCart(){
+    productDetailContainer.classList.add('inactive');
     desktopMenu.classList.add('inactive');
     mobileMenu.classList.add('inactive');
     aside.classList.toggle('inactive');
+}
+
+function openProductDetailAside(){
+    desktopMenu.classList.add('inactive');
+    aside.classList.add('inactive');
+    productDetailContainer.classList.remove('inactive')
+}
+
+function closeProductDetailAside(){
+    productDetailContainer.classList.add('inactive');
 }
 
 const productList = [];
@@ -40,28 +57,29 @@ for(let i=0; i<12; i++){
 }
 
 for (product of productList) {
-    let productCard = document.createElement('div');
+    const productCard = document.createElement('div');
     productCard.classList.add('product-card');
 
-    let productImg = document.createElement('img');
+    const productImg = document.createElement('img');
+    productImg.addEventListener('click', openProductDetailAside);
     productImg.setAttribute('src', product.image);
 
-    let productInfo = document.createElement('div');
+    const productInfo = document.createElement('div');
     productInfo.classList.add('product-info');
 
-    let productInfoDiv = document.createElement('div');
+    const productInfoDiv = document.createElement('div');
 
-    let productPrice = document.createElement('p');
+    const productPrice = document.createElement('p');
     productPrice.innerText = '$' +  product.price;
 
-    let productName = document.createElement('p');
+    const productName = document.createElement('p');
     productName.innerText = product.name;
 
     productInfoDiv.append(productPrice, productName);
 
-    let productInfoFigure = document.createElement('figure');
+    const productInfoFigure = document.createElement('figure');
 
-    let productInfoImgCart = document.createElement('img');
+    const productInfoImgCart = document.createElement('img');
     productInfoImgCart.setAttribute('src', './assets/Platzi_YardSale_Icons/bt_add_to_cart.svg');
 
     productInfoFigure.appendChild(productInfoImgCart);
